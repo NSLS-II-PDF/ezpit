@@ -79,3 +79,5 @@ __pycache__
 # Coverage report
 .coverage
 htmlcov
+
+*.pptx
