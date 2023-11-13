@@ -31,7 +31,6 @@ def load_atom_names(file_path):
         atom_list = [line.strip() for line in f.readlines() if line.strip() != '']
     return atom_list
 
-
 def load_scattering_factors(file_path):
     with open(file_path, 'r') as f:
         data = []
@@ -39,6 +38,13 @@ def load_scattering_factors(file_path):
             data.append([float(val) for val in line.strip().split('\t')])
     return np.array(data)
 
+def convert_atom_names(composition):
+    atom_names = []
+    for item in composition.items():
+        key, value = item
+        for j in range(value):
+            atom_names.append(key)
+    return atom_names
 
 def get_scattering_factors(atom_names, database_atom_names,
                            database_scat_factors):
@@ -58,13 +64,13 @@ def group_atoms(atom_names):
     name list. Results will be used by other functions.
     """
     counter = Counter(atom_names)
-    print('conter = ', counter)
+    #print('conter = ', counter)
     atom_uni_names = list(counter.keys())
-    print('atom_uni_names = ', atom_uni_names)
+    #print('atom_uni_names = ', atom_uni_names)
     atom_counts = list(counter.values())
-    print('atom_counts = ', atom_counts)
+    #print('atom_counts = ', atom_counts)
     atom_indices = [atom_uni_names.index(atom) for atom in atom_names]
-    print('atom_indices = ', atom_indices)
+    #print('atom_indices = ', atom_indices)
     return atom_uni_names, np.asarray(atom_counts), np.asarray(atom_indices)
 
 
