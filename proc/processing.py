@@ -149,15 +149,14 @@ def calculate_Gr_fft(q, Sq, rmin=0, rmax=100, rstep=0.02, qdamp=0.0,
     return r_list, gr
 
 #calculate S(q), F(q), G(r) from experimental I(q)
-def calculate_expSq(atom_unique_names, atom_counts, atom_indices, scattering_factors, expqIq_data,
-                    bkgqIq_data, qmin=0, qmax=25, qstep=0.1, background_scale = 1.1, poly_order=11, return_Iq=False):
-
+def calculate_expSq(atom_indices, scattering_factors, expqIq_data, bkgqIq_data, qmin=0, qmax=25, qstep=0.1,
+                    background_scale=1.1, poly_order=11, return_Iq=False):
     # load experimental Iq data
     exp_qiq = np.loadtxt(expqIq_data)
     exp_q = exp_qiq[:, 0]
     exp_Iq = exp_qiq[:, 1]
 
-    #load ackground data   #####think about adding more background data
+    #load background data   #####think about adding more background data
     bkg_qiq = np.loadtxt(bkgqIq_data)
     bkg_Iq = bkg_qiq[:, 1]
 

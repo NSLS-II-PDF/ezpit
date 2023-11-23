@@ -36,9 +36,9 @@ atom_unique_names, atom_counts, atom_indices = losa.group_atoms(atom_names)
 
 scattering_factors = losa.get_scattering_factors(atom_unique_names, database_atom_names,
                                                 database_scat_factors)
-q, Iq, scaled_expIq, list_scaled_bkgIq, list_Sq, Sq, Fq, mean_sq_fi, sq_mean_fi = proc.calculate_expSq(atom_unique_names, atom_counts, atom_indices,
-                                                             scattering_factors, expqIq_data, bkgqIq_data, qmin=qmin, qmax=qmax, qstep=qstep,
-                                                             background_scale=background_scale, poly_order=11, return_Iq=False)
+q, Iq, scaled_expIq, list_scaled_bkgIq, list_Sq, Sq, Fq, mean_sq_fi, sq_mean_fi = proc.calculate_expSq(atom_indices,
+            scattering_factors, expqIq_data, bkgqIq_data, qmin=qmin, qmax=qmax, qstep=qstep,
+            background_scale=background_scale, poly_order=11, return_Iq=False)
 #load test results in xPDFsuite with the same data plotted here.
 test_xpdfsuite_qsq = np.loadtxt("C:/Users/gkwon/Pycharmprojects/ezpit/data/sum_A_CoPiITO_110320-1_Nsum5-Nohdeader.sq")
 test_xpdfsuite_qfq = np.loadtxt("C:/Users/gkwon/Pycharmprojects/ezpit/data/sum_A_CoPiITO_110320-1_Nsum5-NOheader.fq")
