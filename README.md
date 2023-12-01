@@ -7,9 +7,8 @@ Ezpit is a Python-based software for calculating the pair distribution function 
 The current python code for the Easy(EZ) (P)air (D)istribution (F)unction is being cleaned up and will be shared soon. The EZPDF code can calculate S(q), F(q), and G(r) from the experimental I(q) data.
 
 Contributor: 
-Gihan Kwon, Nghia Vo, Ajith Pattammattel, Joshua Lynch - NSLS-II, Brookhaven National Laboratory, NY, US.
-Hui Zhong – Joint Photon Science Institute (JPSI), Stony Brook University, NY, US.
-
+Gihan Kwon, Nghia Vo, Hui Zhong, Ajith Pattammattel - NSLS-II, Brookhaven National Laboratory, NY, US.
+Joshua Lynch - Taking a Break.
 
 [Documentation](docs/tutorial.md)
 ---------------------------------
