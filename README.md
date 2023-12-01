@@ -8,6 +8,7 @@ The current python code for the Easy(EZ) (P)air (D)istribution (F)unction is bei
 
 Contributor: 
 Gihan Kwon, Nghia Vo, Hui Zhong, Ajith Pattammattel - NSLS-II, Brookhaven National Laboratory, NY, US.
+
 Joshua Lynch - Taking a Break.
 
 [Documentation](docs/tutorial.md)
