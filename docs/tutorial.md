@@ -5,12 +5,12 @@ Input file
 
 EZPIT is a software tool that can process ".xyz coordinate file" data from 
 various 3D modeling programs. These programs include Mercury, Discovery Studio, 
-VESTA, Avogadro, CrystalMaker and more. To use EZPIT with ions, the user must 
-match the ion name with the one in the atomic form factor file (aff_elementonly.txt). 
+VESTA, Avogadro, CrystalMaker and more. To use EZPIT with atom and ion, the user must 
+match their name with the one in the atomic form factor file (aff_elementonly.txt). 
 This file can be found in the "data" folder of EZPIT. Here are some examples of xyz 
 coordinate file format.
 
-![img.png](img.png)
+![](atom and ion.png)
 
 An experimental G(r) file is a text file that contains the radial distribution 
 function of a material. The file has two columns: the first one is the distance r 
