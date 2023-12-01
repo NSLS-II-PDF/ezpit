@@ -10,7 +10,7 @@ match their name with the one in the atomic form factor file (aff_elementonly.tx
 This file can be found in the "data" folder of EZPIT. Here are some examples of xyz 
 coordinate file format.
 
-![](atom and ion.png)
+![img_1.png](atom and ion.png)
 
 An experimental G(r) file is a text file that contains the radial distribution 
 function of a material. The file has two columns: the first one is the distance r 
