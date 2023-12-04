@@ -39,6 +39,14 @@ def load_scattering_factors(file_path):
     return np.array(data)
 
 def convert_atom_names(composition):
+    """
+    if composition = {'Co': 3, 'O': 4, 'P': 1},
+    atom_names = losa.convert_atom_names(composition)
+    print('atom_names = ', atom_names)
+    --> atom_names = ['Co', 'Co', 'Co', 'O', 'O', 'O', 'O', 'P']
+
+    Returns
+    """
     atom_names = []
     for item in composition.items():
         key, value = item
