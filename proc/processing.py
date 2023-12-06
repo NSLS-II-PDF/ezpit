@@ -90,8 +90,7 @@ def calculate_Sq(atom_indices, scattering_factors, atom_distance_matrix,
     list_Iq = np.asarray(list_Iq)
     mean_sq_fi = np.asarray(mean_sq_fi)  # <f^2>
     sq_mean_fi = np.asarray(sq_mean_fi)  # <f>^2
-    #list_Sq = (list_Iq - num_atom * mean_sq_fi) / (num_atom * sq_mean_fi) + 1
-    list_Sq = (list_Iq - mean_sq_fi) / (sq_mean_fi) + 1  # removed total number of atoms 11/27/2023
+    list_Sq = (list_Iq - num_atom * mean_sq_fi) / (num_atom * sq_mean_fi) + 1
     list_Fq = q_range * (list_Sq - 1)  # added 8/26/2023
 
     if return_Iq:
