@@ -194,6 +194,7 @@ Calculating Compton scattering pattern
 ======================================
 
 The Compton scattering pattern can be obtained from the equation below.
+
 ![img_26.png](img_26.png)
 
 The table for the Compton scattering atomic form factor was obtained from 
@@ -210,16 +211,21 @@ When the code reads each atom in the ".xyz coordinate file," it identifies the r
 ![img_28_compton scattering table.png](img_28_compton scattering table.png)
 
 The code for the atomic form factor of Compton scattering is shown below.
+
 ![img_29_compton scattering form factor equation.png](img_29_compton scattering form factor equation.png)
 
 The necessary information for calculating the Compton scattering pattern is
+
 ![img_30_required information_compton scattering form factor calculation.png](img_30_required information_compton scattering form factor calculation.png)
 
 The plot of the calculated Compton scattering pattern for the composition Co2 O2 P1 is displayed below.
+
 ![img_31_calc._compton scattering patten Co2O2P1.png](img_31_calc._compton scattering patten Co2O2P1.png)
 
 Also, several important functions in "loadsaver.py" are explained in terms of their roles. Please see the examples below.
+
 ![img_32_examples of loadsaver.py.png)](img_32_examples of loadsaver.py.png)
+
 ![img_33_examples of loadsaver.py.png](img_33_examples of loadsaver.py.png)
 
 Calculating S(q), F(q), G(r) from experimental I(q)
