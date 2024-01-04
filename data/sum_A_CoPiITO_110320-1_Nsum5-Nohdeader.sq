@@ -1,3 +1,29 @@
+# xPDFsuite Configuration #
+[PDF]
+wavelength = 0.1
+dataformat = twotheta
+inputfile = C_Ni50Fe50FTO_01212021-1.chi
+backgroundfile = C_0p7cap_20210218.chi
+mode = xray
+bgscale = 1.18
+composition = Ni Fe O
+outputtype = sq
+qmaxinst = 33.0
+qmin = 0.6
+qmax = 27.0
+rmax = 100.0
+rmin = 0.0
+rstep = 0.01
+rpoly = 0.7512
+
+[Misc]
+inputdir = D:/1-Beamtime/user_data_Kwon_306942_84f61ab7_2021-02-19-1003
+savedir = D:/1-Beamtime/user_data_Kwon_306942_84f61ab7_2021-02-19-1003
+backgroundfilefull = D:/1-Beamtime/user_data_Kwon_306942_84f61ab7_2021-02-19-1003/C_0p7cap_20210218.chi
+
+#### start data
+#S 1
+#L Q($\AA^{-1}$)  S(a.u.)
 0.605078 1.58005
 0.616482 1.5551
 0.627886 1.53162

@@ -10,7 +10,7 @@ def create_atom_distance_matrix(atom_positions):
 
 def __calc_fi(scat_values, q):
     """
-    Support function
+    Calculate scattering form factor
     """
     k_sq = (0.25 * q / np.pi) ** 2
     fi1 = scat_values[0] * np.exp(-scat_values[1] * k_sq)
@@ -21,6 +21,63 @@ def __calc_fi(scat_values, q):
     fi = fi1 + fi2 + fi3 + fi4 + fic
     return fi
 
+# added Compton scattering form factor calculation with the given q range and composition on 12/18/2023#############
+def __calc_compton_fi(compton_scattering_factors, q):
+    """
+    calculate Compton scattering form factor
+    """
+    k_sq = (0.25 * q / np.pi) ** 2
+    fi1 = compton_scattering_factors[0] * np.exp(-compton_scattering_factors[6] * k_sq)
+    fi2 = compton_scattering_factors[1] * np.exp(-compton_scattering_factors[7] * k_sq)
+    fi3 = compton_scattering_factors[2] * np.exp(-compton_scattering_factors[8] * k_sq)
+    fi4 = compton_scattering_factors[3] * np.exp(-compton_scattering_factors[9] * k_sq)
+    fi5 = compton_scattering_factors[4] * np.exp(-compton_scattering_factors[10] * k_sq)
+    fic = compton_scattering_factors[5]
+    fi = fi1 + fi2 + fi3 + fi4 + fi5 + fic
+    return fi
+
+
+# added Compton scattering calculation with the given q range and composition on 12/15/2023
+def compton_calc_exp(atom_indices, compton_scat_parms, compton_scattering_factors,
+                     atomic_number, qmin=0.2, qmax=20, qstep=0.1, wavelength=0.1665, alpha=3):
+    #parameters for Breit-Dirac recoil factor
+    me = 9.109534e-31
+    C = 2.99792458e18  # 8+10 m to A
+    h = 6.62607015e-14  # -34+20 , m^2 to A^2
+    part_A = 2.0 * h * wavelength / me / C
+
+    num_atom = len(atom_indices)
+    num_fact = len(compton_scattering_factors)
+    q_range = np.arange(qmin, qmax, qstep)
+    list_compton_scat = []
+    compton_scat = 0.0
+
+    for q in q_range:
+        #print('q = ', q)
+        atomic_number_sum = 0.0
+        fi2_sum = 0.0
+        part_B = (q / (4.0 * np.pi)) ** 2.0
+        BD_recoil_fact = (part_A * part_B + 1) ** (-alpha)  # Breit-Dirac recoil factor
+        list_fi = []
+        for k in range(num_fact):
+            #print('k = ', k)
+            list_fi.append(__calc_compton_fi(compton_scat_parms[atomic_number[k]-1], q))
+            #print('list_fi = ', list_fi)
+        list_fi = np.asarray(list_fi)
+        #print('list_fi = np.asarray(list_fi) = ', list_fi)
+        for i, idx in enumerate(atom_indices):
+            #print('i = ', i)
+            #print('idx = ', idx)
+            fi = list_fi[idx]
+            #print('fi = list_fi[idx] = ', fi)
+            atomic_number_sum = atomic_number_sum + atomic_number[idx]
+            #print('atomic_number_sum = atomic_number_sum + atomic_number[idx] = ', atomic_number_sum)
+            fi2_sum = fi2_sum + (fi ** 2) / atomic_number[idx]
+            #print('fi2_sum = fi2_sum + (fi ** 2) / atomic_number[idx] = ',fi2_sum)
+        compton_scat = BD_recoil_fact * (1/num_atom*atomic_number_sum - 1/num_atom*fi2_sum)
+        list_compton_scat.append(compton_scat)
+    return q_range, list_compton_scat
+# added Compton scattering calculation with the given q range and composition on 12/18/2023#################
 
 def calculate_Iq(atom_indices, scattering_factors, atom_distance_matrix,
                  qmin=0.5, qmax=20, qstep=0.05):
@@ -100,6 +157,9 @@ def calculate_Sq(atom_indices, scattering_factors, atom_distance_matrix,
 
 
 def calculate_Gr_integral(q, Sq, rmin=0, rmax=100, rstep=0.02, qdamp=0.0):
+    """
+    Calculate Gr from input xyz coordinate file with integral function
+    """
     list_r = np.arange(rmin, rmax + rstep, rstep)
     Fq = (Sq - 1) * q
     qstep = q[1] - q[0]
@@ -115,6 +175,9 @@ def calculate_Gr_integral(q, Sq, rmin=0, rmax=100, rstep=0.02, qdamp=0.0):
 
 def calculate_Gr_fft(q, Sq, rmin=0, rmax=100, rstep=0.02, qdamp=0.0,
                      extrapolate_type="linear"):
+    """
+    Calculate Gr from input xyz coordinate file with inverse fast Fourier transform (IFFT) function
+    """
     qstep = q[1] - q[0]
     #print('q[0] = ', q[0])
     num_point = int(np.ceil(q[0] / qstep))
@@ -152,12 +215,12 @@ def calculate_Gr_fft(q, Sq, rmin=0, rmax=100, rstep=0.02, qdamp=0.0,
 def calculate_expSq(atom_indices, scattering_factors, expqIq_data, bkgqIq_data, qmin=0, qmax=25, qstep=0.1,
                     background_scale=1.1, poly_order=11, return_Iq=False):
     # load experimental Iq data
-    exp_qiq = np.loadtxt(expqIq_data)
+    exp_qiq = np.loadtxt(expqIq_data, skiprows=4)
     exp_q = exp_qiq[:, 0]
     exp_Iq = exp_qiq[:, 1]
 
     #load background data   #####think about adding more background data
-    bkg_qiq = np.loadtxt(bkgqIq_data)
+    bkg_qiq = np.loadtxt(bkgqIq_data, skiprows=4)
     bkg_Iq = bkg_qiq[:, 1]
 
     num_atom = len(atom_indices)
@@ -221,17 +284,18 @@ def calculate_expSq(atom_indices, scattering_factors, expqIq_data, bkgqIq_data, 
     # https://jyyuan.wordpress.com/2014/01/02/polynomial-interpolation-using-vandermonde-matrix-and-least-squares/
     # vandermonde matrix works with "np.linalg.lstsq" to minimize least-sqare difference. August/15/2023.
     # So aside from the downsides of interpolation and whatever, what should we be careful of here?
-    # Overfitting the polynomial can make for some very poor solutions that don’t really make any sense in the context of the problem at hand,
-    # so in general, doing least squares with a tall Vandermonde matrix for this interpolation problem will get better results than a square Vandermonde or an underdetermined problem.
+    # Overfitting the polynomial can make for some very poor solutions that don’t really make any sense
+    # in the context of the problem at hand, so in general, doing least squares with a tall Vandermonde matrix
+    # for this interpolation problem will get better results than a square Vandermonde or an underdetermined problem.
     # The saying that simpler is better has never rung so true.
-    # A more sensitive issue specific to computer calculation is that the Vandermonde matrix built can have some poor conditioning,
-    # with larger powers ballooning or shrinking and causing instability of solutions. In those cases,
-    # an alternative and numerical stable interpolation method using Lagrange interpolation is preferred.
+    # A more sensitive issue specific to computer calculation is that the Vandermonde matrix built can have
+    # some poor conditioning, with larger powers ballooning or shrinking and causing instability of solutions.
+    # In those cases, an alternative and numerical stable interpolation method using Lagrange interpolation is preferred.
     p, residuals, rank, s = np.linalg.lstsq(remove_a0_matrix_vandermonde, lstsq_fq, rcond=None)
 
     # vanderMat = np.vander([5],5), print('vanderMat = ', vanderMat) --> vanderMat =  [[625 125  25   5   1]]
     # generate one-dimensional matrix --> thus can compute p (one-dimension) / vandermonde_before_2nd_vander (ond-dimension)
-    vandermonde_2nd = (np.vander([qmax_for_sq], poly_order + 1)[0, :-1])  # -1 plays a role to remove unit (1) in vandermonde matrix
+    vandermonde_2nd = (np.vander([qmax_for_sq], poly_order + 1)[0, :-1])  # -1 plays a role to remove unit(1) in vandermonde matrix
     new_p = p / vandermonde_2nd
 
     # poly1d just add x^n in the coefficient obtained from the vandermonde matrix

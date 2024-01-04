@@ -172,7 +172,7 @@ With the xyz coordinate file, EZPIT provides I(q) to G(r). qdamp was zero (0).
 
 ![img_19.png](img_19.png)
 
-No inos in Ni(OH)2-109391-ICSD-10x10x1.xyz. please see the doc directory.
+No ions in Ni(OH)2-109391-ICSD-10x10x1.xyz. please see the doc directory.
 
 ![img_21.png](img_21.png)
 
@@ -180,13 +180,51 @@ Ions in 5IrC_r5a-1Ir_ion.xyz
 
 ![img_22.png](img_22.png)
 
-qdamp: The parameter that models the exponential decay of the PDF peaks caused
-by the finite q-resolution. PDF peaks are attenuated by a Gaussian envelope 
-due to q-resolution effects. The envelope has the following form.
+qdamp: The parameter that models the exponential decay of the PDF peaks caused by the finite q-resolution. 
+PDF peaks are attenuated by a Gaussian envelope due to q-resolution effects. The envelope has the following form.
 
 ![img_23.png](img_23.png)
 
-The effect of qdamp on the PDF spectrum can be seen in the following figure.
+The impact of qdamp on the PDF spectrum can be observed in the following figure.
 
 ![img_24.png](img_24.png)
 
+
+Calculating Compton scattering pattern
+======================================
+
+The Compton scattering pattern can be obtained from the equation below.
+![img_26.png](img_26.png)
+
+The table for the Compton scattering atomic form factor was obtained from 
+D. T. Cromer, J. Chem. Phys. 50, 4857 (1969), and the equation for the Compton scattering atomic form factor is:
+
+![img_27_Compton scattering form factor.png](img_27_Compton scattering form factor.png)
+
+where f(k) represents the Compton scattering atomic form factor of the i-th atom (no ion information). 
+k is converted to momentum transfer (q) using (0.25⋅q/π)**2, where ai, bi, and C are the parameters from 
+"compton_elementonly.txt". The summation is over five terms. 
+When the code reads each atom in the ".xyz coordinate file," it identifies the row of each atom in 
+"compton_elementonly.txt" and extracts the corresponding parameters such as ai, bi, and C from "compton_parmonly.txt."
+
+![img_28_compton scattering table.png](img_28_compton scattering table.png)
+
+The code for the atomic form factor of Compton scattering is shown below.
+![img_29_compton scattering form factor equation.png](img_29_compton scattering form factor equation.png)
+
+The necessary information for calculating the Compton scattering pattern is
+
+![img_30_required information_compton scattering form factor calculation.png](img_30_required information_compton scattering form factor calculation.png).
+
+The plot of the calculated Compton scattering pattern for the composition Co2 O2 P1 is displayed below.
+![img_31_calc._compton scattering patten Co2O2P1.png](img_31_calc._compton scattering patten Co2O2P1.png)
+
+Also, several important functions in "loadsaver.py" are explained in terms of their roles. Please see the examples below.
+![img_32_examples of loadsaver.py.png](img_32_examples of loadsaver.py.png)
+
+![img_33_examples of loadsaver.py.png](img_33_examples of loadsaver.py.png)
+
+
+Calculating S(q), F(q), G(r) from experimental I(q)
+===================================================
+An explanation for this part will be posted in the near future.
