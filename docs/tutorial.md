@@ -200,7 +200,7 @@ The Compton scattering pattern can be obtained from the equation below.
 The table for the Compton scattering atomic form factor was obtained from 
 D. T. Cromer, J. Chem. Phys. 50, 4857 (1969), and the equation for the Compton scattering atomic form factor is:
 
-![img_27_Compton scattering form factor.png](img_27_Compton scattering form factor.png)
+![img_27.png](img_27.png)
 
 where f(k) represents the Compton scattering atomic form factor of the i-th atom (no ion information). 
 k is converted to momentum transfer (q) using (0.25⋅q/π)**2, where ai, bi, and C are the parameters from 
@@ -208,25 +208,25 @@ k is converted to momentum transfer (q) using (0.25⋅q/π)**2, where ai, bi, an
 When the code reads each atom in the ".xyz coordinate file," it identifies the row of each atom in 
 "compton_elementonly.txt" and extracts the corresponding parameters such as ai, bi, and C from "compton_parmonly.txt."
 
-![img_28_compton scattering table.png](img_28_compton scattering table.png)
+![img_28.png](img_28.png)
 
 The code for the atomic form factor of Compton scattering is shown below.
 
-![img_29_compton scattering form factor equation.png](img_29_compton scattering form factor equation.png)
+![img_29.png](img_29.png)
 
 The necessary information for calculating the Compton scattering pattern is
 
-![img_30_required information_compton scattering form factor calculation.png](img_30_required information_compton scattering form factor calculation.png)
+![img_30.png](img_30.png)
 
 The plot of the calculated Compton scattering pattern for the composition Co2 O2 P1 is displayed below.
 
-![img_31_calc._compton scattering patten Co2O2P1.png](img_31_calc._compton scattering patten Co2O2P1.png)
+![img_31.png](img_31.png)
 
 Also, several important functions in "loadsaver.py" are explained in terms of their roles. Please see the examples below.
 
-![img_32_examples of loadsaver.py.png)](img_32_examples of loadsaver.py.png)
+![img_32.png](img_32.png)
 
-![img_33_examples of loadsaver.py.png](img_33_examples of loadsaver.py.png)
+![img_33.png](img_33.png)
 
 Calculating S(q), F(q), G(r) from experimental I(q)
 ===================================================
