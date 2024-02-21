@@ -7,8 +7,9 @@ This is useful for studying the structure of disordered materials.
 Currently, It can calculate I(q), S(q), F(q), and G(r) from the model. 
 The software is still under development and will soon include a fit function with atomic displacement.
 
-The current python code for the Easy(EZ) (P)air (D)istribution (F)unction is being cleaned up and will be shared soon. 
-The EZPDF code can calculate S(q), F(q), G(r), and Compton scattering pattern from the experimental I(q) data and the given composition.
+The current python code for the Easy(EZ) (P)air (D)istribution (F)unction including Compton scattering calculation 
+is being cleaned up and will be shared soon. 
+The EZPDF code provides S(q), F(q), G(r), and Compton scattering pattern from the experimental I(q) data and the given composition.
 
 
 Contributor: 

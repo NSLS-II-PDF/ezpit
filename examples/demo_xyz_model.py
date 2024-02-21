@@ -1,7 +1,15 @@
+'''
 import matplotlib.pyplot as plt
 import losa.loadersaver as losa
 import proc.processing as proc
 import timeit
+'''
+
+import matplotlib.pyplot as plt
+import loadersaver as losa
+import processing as proc
+import timeit
+import numpy as np
 
 input_base = "C:/Users/gkwon/Pycharmprojects/ezpit/data/"
 
