@@ -1,6 +1,6 @@
 # This is for tutorial
 
-Necessary Precautions Before Running Python Code!!!
+Necessary Prerequisites Before Executing Python Code!!!
 ===================================================
 
 Installing Python and tools for writing codes
