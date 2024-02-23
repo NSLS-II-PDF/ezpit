@@ -1,5 +1,14 @@
 # This is for tutorial
 
+Necessary Precautions Before Running Python Code!!!
+===================================================
+
+Installing Python and tools for writing codes
+https://algotom.readthedocs.io/en/latest/toc/section1/section1_1.html
+
+Setting up a Python workspace
+https://algotom.readthedocs.io/en/latest/toc/section4/section4_1.html
+
 Input file
 ==========
 
