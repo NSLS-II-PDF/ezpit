@@ -239,4 +239,47 @@ Also, several important functions in "loadsaver.py" are explained in terms of th
 
 Calculating S(q), F(q), G(r) from experimental I(q)
 ===================================================
-An explanation for this part will be posted in the near future.
+Figure a) displays various experimental and analytical data points: the experimental intensity I(q) (denoted as exp_Iq), 
+the scaled background (represented as nn1*bkg), the background-subtracted experimental intensity I(q) 
+(labeled as bkg subtracted Iq), Compton scattering (Compton_scat), the mean square of the form factor (mean_square_fi, <f²>), 
+the square of the mean form factor (square_mean_fi, <f>²), and the summation of Compton scattering and 
+the mean square of the form factor.
+
+![img_36.png](img_36.png)
+
+Figure b) presents the background-subtracted experimental intensity I(q) (denoted as bkg subtracted Iq), 
+the mean square of the form factor (mean_square_fi, <f²>), and the square of the mean form factor (square_mean_fi, <f>²).
+
+![img_37.png](img_37.png)
+
+Figure c) exhibits the structure function (not normalized S(q)) derived from the experimental intensity I(q) 
+(exp_Iq) in Figure a), along with S(q) (xpdfsute_S(q)) from xPDFsuite for comparison. 
+The not normalized S(q) shows an increase in intensity as a function of increasing q (1/Å), 
+which is attributed to the instrumental limitations. To normalize the oscillation of S(q) around 1, 
+a form of correction is necessary. EZPDF employs a polynomial correction, similar to the approach taken by xPDFsuite.
+
+![img_38.png](img_38.png)
+
+Figure d) illustrates the structure function (S(q)) derived from the experimental intensity I(q) (exp_Iq) shown in Figure a). 
+After applying a polynomial correction, S(q) oscillates around 1. 
+For comparison, S(q) (xpdfsute_S(q)) obtained from xPDFsuite is also displayed. 
+Aside from a difference in scaling, both S(q) representations are identical.
+
+![img_39.png](img_39.png)
+
+Figure e) presents the reduced structure function (F(q)) derived from S(q) in Figure d), where F(q) oscillates around 0. 
+For comparison, F(q) (xpdfsute_F(q)) from xPDFsuite is also shown. Apart from a difference in scaling, 
+both versions of F(q) are identical.
+
+![img_40.png](img_40.png)
+
+Figure f) displays pair distribution functions (integral-G(r), iff-G(r)) derived from F(q) in Figure e) 
+using an integral function and inverse fast Fourier transform (ifft). 
+For comparison, G(r) (xpdfsute_G(r)) from xPDFsuite is also shown. Aside from a difference in scaling, 
+the pair distribution functions are identical.
+
+![img_41.png](img_41.png)
+
+To obtain I(q), S(q), F(q), G(r) from input xyz coordinates, or to derive S(q), F(q), G(r) from experimental I(q) 
+or Compton scattering patterns, please refer to the files located in the examples directory.
+
