@@ -1,7 +1,7 @@
 # This is for tutorial
 
 Necessary Prerequisites Before Executing Python Code!!!
-===================================================
+=======================================================
 
 Installing Python and tools for writing codes
 https://algotom.readthedocs.io/en/latest/toc/section1/section1_1.html
@@ -280,6 +280,8 @@ the pair distribution functions are identical.
 
 ![img_41.png](img_41.png)
 
-To obtain I(q), S(q), F(q), G(r) from input xyz coordinates, or to derive S(q), F(q), G(r) from experimental I(q) 
-or Compton scattering patterns, please refer to the files located in the examples directory.
 
+To obtain I(q), S(q), F(q), G(r) from input xyz coordinates, or to derive S(q), F(q), G(r) from experimental I(q) 
+=================================================================================================================
+or Compton scattering patterns, please refer to the files located in the """examples""" directory.
+==================================================================================================
