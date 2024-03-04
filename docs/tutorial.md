@@ -9,6 +9,9 @@ https://algotom.readthedocs.io/en/latest/toc/section1/section1_1.html
 Setting up a Python workspace
 https://algotom.readthedocs.io/en/latest/toc/section4/section4_1.html
 
+***** To obtain I(q), S(q), F(q), G(r) from input xyz coordinates, or to derive S(q), F(q), G(r) from experimental I(q) 
+or Compton scattering patterns, please refer to the files located in the """examples""" directory. ******
+
 Input file
 ==========
 
@@ -280,7 +283,6 @@ the pair distribution functions are identical.
 
 ![img_41.png](img_41.png)
 
-==================================================================================================================
-To obtain I(q), S(q), F(q), G(r) from input xyz coordinates, or to derive S(q), F(q), G(r) from experimental I(q) 
-or Compton scattering patterns, please refer to the files located in the """examples""" directory.
-==================================================================================================================
+
+
+
