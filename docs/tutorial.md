@@ -244,24 +244,32 @@ Calculating S(q), F(q), G(r) from experimental I(q)
 ===================================================
 Figure a) displays various experimental and analytical data points: the experimental intensity I(q) (denoted as exp_Iq), 
 the scaled background (represented as nn1*bkg), the background-subtracted experimental intensity I(q) 
-(labeled as bkg subtracted Iq), Compton scattering (Compton_scat), the mean square of the form factor (mean_square_fi, <f²>), 
-the square of the mean form factor (square_mean_fi, <f>²), and the summation of Compton scattering and 
-the mean square of the form factor.
+(labeled as bkg subtracted Iq), Compton scattering (Compton_scat), the mean square of the form factor 
+(mean_square_fi, <f^2>), the square of the mean form factor (square_mean_fi, <f>^2), and 
+the summation of Compton scattering and the mean square of the form factor.
 
 ![img_36.png](img_36.png)
 
 Figure b) presents the background-subtracted experimental intensity I(q) (denoted as bkg subtracted Iq), 
-the mean square of the form factor (mean_square_fi, <f²>), and the square of the mean form factor (square_mean_fi, <f>²).
+the mean square of the form factor (mean_square_fi, <f^2>), and the square of the mean form factor (square_mean_fi, <f>^2).
 
 ![img_37.png](img_37.png)
 
 Figure c) exhibits the structure function (not normalized S(q)) derived from the experimental intensity I(q) 
 (exp_Iq) in Figure a), along with S(q) (xpdfsute_S(q)) from xPDFsuite for comparison. 
 The not normalized S(q) shows an increase in intensity as a function of increasing q (1/Å), 
-which is attributed to the instrumental limitations. To normalize the oscillation of S(q) around 1, 
+which is attributed to the imperfection of all subtraction and the instrumental limitations. To normalize the oscillation of S(q) around 1, 
 a form of correction is necessary. EZPDF employs a polynomial correction, similar to the approach taken by xPDFsuite.
 
 ![img_38.png](img_38.png)
+
+As an example of polynomial correction of S(q), polynomial order is used instead of r-poly, which is adopted in xPDFsuite.
+The black line represents the "Experimental S(q)" which is not corrected by polynomial.
+The red line denotes the calculated polynomial for the black line.
+The blue line illustrates the S(q) after subtracting the red line from the black line.
+To obtain a polynomial function, a Vandermonde matrix with a least squares fit is utilized here.
+
+![img_38-1.png](img_38-1.png)
 
 Figure d) illustrates the structure function (S(q)) derived from the experimental intensity I(q) (exp_Iq) shown in Figure a). 
 After applying a polynomial correction, S(q) oscillates around 1. 
