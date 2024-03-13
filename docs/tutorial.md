@@ -278,7 +278,7 @@ After applying a polynomial correction, S(q) oscillates around 1.
 For comparison, S(q) (xpdfsute_S(q)) obtained from xPDFsuite is also displayed. 
 Aside from a difference in scaling, both S(q) representations are identical.
 
-![img_38-1.png](img_38-1.png)
+![img_39.png](img_39.png)
 
 Figure e) presents the reduced structure function (F(q)) derived from S(q) in Figure d), where F(q) oscillates around 0. 
 For comparison, F(q) (xpdfsute_F(q)) from xPDFsuite is also shown. Apart from a difference in scaling, 
