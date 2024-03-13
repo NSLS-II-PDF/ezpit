@@ -12,6 +12,8 @@ https://algotom.readthedocs.io/en/latest/toc/section4/section4_1.html
 ***** To obtain I(q), S(q), F(q), G(r) from input xyz coordinates, or to derive S(q), F(q), G(r) from experimental I(q) 
 or Compton scattering patterns, please refer to the files located in the """examples""" directory. ******
 
+Sooner or later, we will incorporate various fitting functions to assess input models using experimental data.
+
 Input file
 ==========
 
@@ -276,7 +278,7 @@ After applying a polynomial correction, S(q) oscillates around 1.
 For comparison, S(q) (xpdfsute_S(q)) obtained from xPDFsuite is also displayed. 
 Aside from a difference in scaling, both S(q) representations are identical.
 
-![img_39.png](img_39.png)
+![img_38-1.png](img_38-1.png)
 
 Figure e) presents the reduced structure function (F(q)) derived from S(q) in Figure d), where F(q) oscillates around 0. 
 For comparison, F(q) (xpdfsute_F(q)) from xPDFsuite is also shown. Apart from a difference in scaling, 
