@@ -270,6 +270,11 @@ The black line represents the "Experimental S(q)" which is not corrected by poly
 The red line denotes the calculated polynomial for the black line.
 The blue line illustrates the S(q) after subtracting the red line from the black line.
 To obtain a polynomial function, a Vandermonde matrix with a least squares fit is utilized here.
+Reference materials:
+https://m.youtube.com/watch?v=BExDXaFOjF4
+Prof. Wen Shen, Penn State Univ.
+https://www.youtube.com/watch?v=G6lVSD0Jci0&t=211s
+Numerical recipes by W. Press, B. Flannery, S. Teukolsky, W. Vetterling
 
 ![img_38-1.png](img_38-1.png)
 
