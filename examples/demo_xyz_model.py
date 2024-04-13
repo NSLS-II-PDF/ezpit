@@ -6,8 +6,8 @@ import timeit
 '''
 
 import matplotlib.pyplot as plt
-import loadersaver as losa
-import processing as proc
+import losa.loadersaver as losa
+import proc.processing as proc
 import timeit
 import numpy as np
 
@@ -32,11 +32,11 @@ database_scat_factors = losa.load_scattering_factors(aff_parm_file)
 # print(len(database_atom_names))
 # print(database_scat_factors.shape)
 
-qmin = 0.0
-qmax = 24
-qstep = 0.01
+qmin = 0.5
+qmax = 30
+qstep = 0.001
 rmin = 0
-rmax = 12
+rmax = 15
 rstep = 0.001
 qdamp = 0.0
 #method = 'ifft'
@@ -58,6 +58,7 @@ plt.plot(q, Iq, label='I(q)')
 #plt.plot(q, mean_sq_fi, label='mean_sq_fi')
 plt.xlabel('q (1/A)')
 plt.ylabel('I(q)')
+#plt.xscale("log")
 plt.yscale("log")
 plt.grid()
 plt.legend()
@@ -78,7 +79,7 @@ plt.legend()
 
 t0 = timeit.default_timer()
 r, Gr = proc.calculate_Gr_integral(q, Sq, rmin=rmin, rmax=rmax, rstep=rstep, qdamp=qdamp)
-#np.savetxt(input_base + 'Gr_qdamp0p0.dat', np.column_stack(([r, Gr])))   # or use "list(zip(r, Gr)))"
+np.savetxt(input_base + '5IrC_r5a-1Ir_integral_qmin0p5.gr', np.column_stack(([r, Gr])))   # or use "list(zip(r, Gr)))"
 
 t1 = timeit.default_timer()
 print("Time cost real space!!! ", t1-t0)
@@ -93,6 +94,8 @@ plt.legend()
 t0 = timeit.default_timer()
 r, Gr2 = proc.calculate_Gr_fft(q, Sq, rmin=rmin, rmax=rmax, rstep=rstep, qdamp=qdamp,
                               extrapolate_type="linear")
+np.savetxt(input_base + '5IrC_r5a-1Ir_ifft_qmin0p5.gr', np.column_stack(([r, Gr2])))   # or use "list(zip(r, Gr)))"
+
 t1 = timeit.default_timer()
 print("Time cost Fourier space!!! ", t1-t0)
 t6 = timeit.default_timer()
