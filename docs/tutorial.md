@@ -79,16 +79,17 @@ the atomic positions in the input .xyz coordinate file.
 
 ![img_6.png](img_6.png)
 
-When i = j, 1st term will be zero (0) which is diagonal component if we express
-all pairs in matrix. Please see the example below. So, the diagonal elements of 
-the matrix will not contribute to the sum of squares of the elements. 
-So, the Debye formula will be:
+When i = j, the Debye formula will be:
 
 ![img_7.png](img_7.png)
+
+If sample is water (H2O,  H1, H2, O1), I(q) = (fH1H1 + fH2H2 + fO1O1)2 = (2fH2 + fO2) 
 
 When q = zero (0), sin(qrij)/(qrij) = 1, So, the Debye formula will be:
 
 ![img_8.png](img_8.png)
+
+If sample is water (H2O,  H1, H2, O1), I(q) = (fH1 + fH2 + fO1)2 = (2fH + fO)2 
 
 One possible way to explain this is:
 The .xyz coordinate file contains the positions of the atoms in a molecule. 
@@ -163,6 +164,7 @@ extrapolation when the line below qmin is zero. This technique can help to
 avoid artifacts and improve the quality of the inversion results. 
 The padding is done by fitting a straight line (y = ax or y=ax +b) to 
 the data points and extending it beyond the original range of qmin and qmax.
+In this code, “interpolate.interp1d (extrapolation=orangeline)” is used fill gap between qmin and zero.
 
 ![img_16.png](img_16.png)
 

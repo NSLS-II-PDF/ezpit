@@ -18,15 +18,20 @@ compton_atomnumber_file = input_base + 'compton_atomicnumber.txt'
 
 #load experimental Iq (expqIq_data and background I(q) (bkgqIq_data)
 #The skipping header for 'xxx.chi' file is located within the "calculate_expSq()' function".
-expqIq_data = 'C:/Users/gkwon/Pycharmprojects/ezpit/data/sum_A_CoPiITO_110320-1_Nsum5.chi'
-bkgqIq_data = 'C:/Users/gkwon/Pycharmprojects/ezpit/data/sum_A_0p7cap_Nsum6.chi'
+#expqIq_data = 'C:/Users/gkwon/Pycharmprojects/ezpit/data/sum_A_CoPiITO_110320-1_Nsum5.chi'
+#bkgqIq_data = 'C:/Users/gkwon/Pycharmprojects/ezpit/data/sum_A_0p7cap_Nsum6.chi'
+
+expIq_input_base = "C:/Users/gkwon/PycharmProjects/ezpit/dev/Test_qmax_file/Chi_1file/"
+bkgqIq_input_base = "C:/Users/gkwon/PycharmProjects/ezpit/dev/Test_qmax_file/background_Chifile_1file/"
+expqIq_data = expIq_input_base + 'A_CoPiITOglass_02142024_1-test_20240219-154304_696917_primary-dk_sub_image-0.chi'
+bkgqIq_data = bkgqIq_input_base + 'A_emptyquartzcap_0p5_20240219-122602_4e50c5_primary-dk_sub_image-0.chi'
 
 #Parameters
-composition = {'Co':13, 'O':44, 'P': 1}
+composition = {'Co':1, 'O':1, 'P': 1}
 qmin = 0.6
 qmax = 24
 qstep = 0.01
-background_scale = 0.99
+background_scale = 0.013
 qdamp = 0
 poly_order = 11
 rmin = 0
@@ -81,12 +86,14 @@ test_xpdfsuite_rgr = np.loadtxt("C:/Users/gkwon/Pycharmprojects/ezpit/data/sum_A
 np.savetxt(input_base + 'square_mean_fi.chi', np.column_stack(([list_q, sq_mean_fi]))) # or use "list(zip(r, Gr)))"
 np.savetxt(input_base + 'mean_square_fi.chi', np.column_stack(([list_q, mean_sq_fi]))) # or use "list(zip(r, Gr)))"
 
+
 xpdfsuite_q = test_xpdfsuite_qsq[:, 0]
 xpdfsuite_sq = test_xpdfsuite_qsq[:, 1]
 xpdfsuite_q = test_xpdfsuite_qfq[:, 0]
 xpdfsuite_fq = test_xpdfsuite_qfq[:, 1]
 xpdfsuite_r = test_xpdfsuite_rgr[:, 0]
 xpdfsuite_gr = test_xpdfsuite_rgr[:, 1]
+
 
 exp_qiq = np.loadtxt(expqIq_data, skiprows=4)
 exp_q = exp_qiq[:, 0]
